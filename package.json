@@ -11,12 +11,33 @@
     },
     "devDependencies": {
         "axios": "^0.17",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-2": "^6.24.1",
         "bootstrap": "^4.0.0",
-        "popper.js": "^1.12",
+        "chart.js": "^2.7.1",
         "cross-env": "^5.1",
+        "emojione": "^2.2.7",
+        "fine-uploader": "^5.15.4",
+        "ionicons": "^2.0.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "marked": "^0.3.12",
+        "path-to-regexp": "^1.7.0",
+        "simplemde": "^1.11.2",
+        "social-share.js": "^1.0.15",
+        "sweetalert": "^1.1.3",
+        "toastr": "^2.1.4",
+        "v-textcomplete": "^0.1.2",
+        "popper.js": "^1.12",
+        "vue": "^2.5.7",
+        "vue-datepicker": "^1.3.0",
+        "vue-i18n": "v6.0.0-alpha.5",
+        "vue-multiselect": "^2.0.8",
+        "vue-router": "^2.8.1",
+        "vuex": "^2.5.0"
+    },
+    "dependencies": {
+        "vue-template-compiler": "^2.5.13"
     }
 }
