@@ -12,27 +12,24 @@ const path = require('path');
  |
  */
 
- mix.webpackConfig({
-  output: {
-    publicPath: "/",
-    chunkFilename: 'js/[name].[chunkhash].js'
-  },
-  resolve: {
-    alias: {
-      'components': 'assets/js/components',
-      'config': 'assets/js/config',
-      'lang': 'assets/js/lang',
-      'plugins': 'assets/js/plugins',
-      'vendor': 'assets/js/vendor',
-      'views': 'assets/js/views',
-      'dashboard': 'assets/js/views/dashboard',
+mix.webpackConfig({
+    output: {
+        publicPath: "/",
+        chunkFilename: 'js/[name].[chunkhash].js'
     },
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, "resources")
-    ]
-  },
-})
+    resolve: {
+        alias: {
+            'components': 'assets/js/components',
+            'config': 'assets/js/config',
+            'plugins': 'assets/js/plugins',
+            'views': 'assets/js/views'
+        },
+        modules: [
+            'node_modules',
+            path.resolve(__dirname, "resources")
+        ]
+    },
+});
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/themes/dashboard/dist/js')
+    .sass('resources/assets/sass/app.scss', 'public/themes/dashboard/dist/css');

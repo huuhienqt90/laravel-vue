@@ -1,22 +1,67 @@
+import httpPlugin from './plugins/http'
+window.Vue = require('vue')
+import VueRouter from 'vue-router'
+import routes from './routes.js'
+Vue.use(VueRouter)
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+Vue.component(
+    'vue-table-pagination',
+    require('./components/dashboard/TablePagination.vue')
+)
 
-require('./bootstrap');
+Vue.component(
+    'vue-table',
+    require('./components/dashboard/Table.vue')
+)
 
-window.Vue = require('vue');
+Vue.component(
+    'vue-form',
+    require('./components/dashboard/Form.vue')
+)
+const router = new VueRouter({
+    mode: 'history',
+    base: __dirname,
+    linkActiveClass: 'active menu-open',
+    routes: routes
+})
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.use(httpPlugin)
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.config.lang = window.Language
 
-const app = new Vue({
-    el: '#app'
+window.toastr = require('toastr/build/toastr.min.js')
+window.innerHeight = 800
+
+window.toastr.options = {
+    positionClass: "toast-top-right",
+    showDuration: "300",
+    hideDuration: "1000",
+    timeOut: "5000",
+    extendedTimeOut: "1000",
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+};
+// Global mixin
+Vue.mixin({
+    methods: {
+        dashboardImg: function(url){
+            return window.BaseUrl+'/themes/dashboard/'+url;
+        },
+        showDashboardUrl: function(url){
+            return '/dashboard/' + url;
+        },
+        image(value) {
+            if (value == null){
+                return '<img src="'+ window.BaseUrl +'/images/No_Image_Available.jpg" class="img-responsive" style="width: 64px !important; height: 64px !important; margin: 0 auto;" />';
+            }
+            return '<img src="' + window.BaseUrl+ '/'+ value + '" class="img-responsive" style="width: 64px !important; height: 64px !important; margin: 0 auto;" />';
+        },
+    }
+});
+
+new Vue({
+    el: "#app",
+    router
 });
